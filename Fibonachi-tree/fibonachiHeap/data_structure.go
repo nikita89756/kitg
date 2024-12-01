@@ -239,10 +239,8 @@ func (fh *FibonacciHeap) Visualization() {
 		return
 	}
 
-	// Генерация DOT-кода
 	dotCode := generateDotCode(fh.heap)
 
-	// Создание файла для сохранения PNG
 	pngFile, err := os.Create("fibonacci_heap.png")
 	if err != nil {
 		fmt.Println("Error creating PNG file:", err)
@@ -250,7 +248,6 @@ func (fh *FibonacciHeap) Visualization() {
 	}
 	defer pngFile.Close()
 
-	// Вызов graphviz для генерации изображения
 	cmd := exec.Command("dot", "-Tpng")
 	cmd.Stdin = strings.NewReader(dotCode)
 	cmd.Stdout = pngFile
