@@ -1,0 +1,7 @@
+digraph FibonacciHeap {
+  node [shape=circle];
+  "0xc00005a100" [label="3"];
+  "0xc00005a100" -> "0xc00005a140";
+  "0xc00005a140" [label="8"];
+  "0xc00005a0c0" [label="5"];
+}
