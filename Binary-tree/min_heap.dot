@@ -1,0 +1,16 @@
+strict digraph MinHeap {
+  // Node definitions.
+  2;
+  3;
+  4;
+  5;
+  15;
+  45;
+
+  // Edge definitions.
+  2 -> 3;
+  2 -> 15;
+  3 -> 4;
+  3 -> 5;
+  15 -> 45;
+}

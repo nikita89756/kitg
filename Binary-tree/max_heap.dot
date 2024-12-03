@@ -1,0 +1,16 @@
+strict digraph MaxHeap {
+  // Node definitions.
+  2;
+  3;
+  4;
+  5;
+  15;
+  45;
+
+  // Edge definitions.
+  5 -> 2;
+  5 -> 4;
+  15 -> 3;
+  45 -> 5;
+  45 -> 15;
+}

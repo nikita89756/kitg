@@ -72,11 +72,11 @@ func (tree *AvlTree) balanceTree() *AvlTree {
 	return tree
 }
 
-func (tree *AvlTree) findMinimalKeyInSubtree() *AvlTree {
+func (tree *AvlTree) FindMinimalKeyInSubtree() *AvlTree {
 	if tree.Left == nil {
 		return tree
 	}
-	return tree.Left.findMinimalKeyInSubtree()
+	return tree.Left.FindMinimalKeyInSubtree()
 }
 
 func (tree *AvlTree) removeMinimalSubtree() *AvlTree {
@@ -97,7 +97,7 @@ func (tree *AvlTree) RemoveTree(Key int) *AvlTree {
 			tree.Right = tree.Right.RemoveTree(Key)
 		}
 	} else {
-		minInRightSubtree := tree.Right.findMinimalKeyInSubtree()
+		minInRightSubtree := tree.Right.FindMinimalKeyInSubtree()
 		minInRightSubtree.Right = tree.Right.removeMinimalSubtree()
 		minInRightSubtree.Left = tree.Left
 		return minInRightSubtree.balanceTree()
