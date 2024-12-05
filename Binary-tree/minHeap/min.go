@@ -14,22 +14,18 @@ type MinHeap struct {
 	heap []int
 }
 
-// Get the parent index
 func (h *MinHeap) parent(index int) int {
 	return (index - 1) / 2
 }
 
-// Get the left child index
 func (h *MinHeap) leftChild(index int) int {
 	return 2*index + 1
 }
 
-// Get the right child index
 func (h *MinHeap) rightChild(index int) int {
 	return 2*index + 2
 }
 
-// Heapify up to maintain heap property
 func (h *MinHeap) heapifyUp(index int) {
 	for index > 0 && h.heap[index] < h.heap[h.parent(index)] {
 		h.heap[index], h.heap[h.parent(index)] = h.heap[h.parent(index)], h.heap[index]
@@ -37,7 +33,6 @@ func (h *MinHeap) heapifyUp(index int) {
 	}
 }
 
-// Heapify down to maintain heap property
 func (h *MinHeap) heapifyDown(index int) {
 	left := h.leftChild(index)
 	right := h.rightChild(index)
@@ -57,35 +52,30 @@ func (h *MinHeap) heapifyDown(index int) {
 	}
 }
 
-// Check if the heap is empty
 func (h *MinHeap) isEmpty() bool {
 	return len(h.heap) == 0
 }
 
-// Get the size of the heap
 func (h *MinHeap) size() int {
 	return len(h.heap)
 }
 
-// Get the minimum element
 func (h *MinHeap) GetMin() (int, error) {
 	if h.isEmpty() {
-		return 0, errors.New("Heap is empty")
+		return 0, errors.New("Куча пуста")
 	}
 	return h.heap[0], nil
 }
 
-// Insert a new key
 func (h *MinHeap) Insert(key int) {
 	h.heap = append(h.heap, key)
 	index := len(h.heap) - 1
 	h.heapifyUp(index)
 }
 
-// Extract the minimum element
 func (h *MinHeap) ExtractMin() (int, error) {
 	if h.isEmpty() {
-		return 0, errors.New("Heap is empty")
+		return 0, errors.New("куча пуста")
 	}
 
 	root := h.heap[0]
@@ -95,10 +85,9 @@ func (h *MinHeap) ExtractMin() (int, error) {
 	return root, nil
 }
 
-// Delete a specific node
 func (h *MinHeap) DeleteNode(key int) error {
 	index := -1
-	// Find the index of the node to delete
+
 	for i := 0; i < len(h.heap); i++ {
 		if h.heap[i] == key {
 			index = i
@@ -107,7 +96,7 @@ func (h *MinHeap) DeleteNode(key int) error {
 	}
 
 	if index == -1 {
-		return errors.New("Key not found in the heap")
+		return errors.New("Ключ не найден в куче")
 	}
 
 	// Replace the node with the last element
@@ -120,7 +109,6 @@ func (h *MinHeap) DeleteNode(key int) error {
 	return nil
 }
 
-// Decrease key function
 func (h *MinHeap) DecreaseKey(i, newValue int) error {
 	if i < 0 || i >= len(h.heap) || newValue > h.heap[i] {
 		return errors.New("Invalid index or new value")
@@ -130,7 +118,6 @@ func (h *MinHeap) DecreaseKey(i, newValue int) error {
 	return nil
 }
 
-// Print the heap elements
 func (h *MinHeap) PrintHeap() {
 	for _, elem := range h.heap {
 		fmt.Print(elem, " ")
@@ -145,7 +132,6 @@ func (h *MinHeap) Visualize() {
 		g.AddNode(simple.Node(node))
 	}
 
-	// Create edges
 	for i, node := range h.heap {
 		left := h.leftChild(i)
 		right := h.rightChild(i)
@@ -157,31 +143,27 @@ func (h *MinHeap) Visualize() {
 		}
 	}
 
-	// Create DOT file
 	dotFile, err := os.Create("min_heap.dot")
 	if err != nil {
 		panic(err)
 	}
 
-	// Serialize graph to DOT format
 	dotBytes, err := dot.Marshal(g, "MinHeap", "", "  ")
 	if err != nil {
 		panic(err)
 	}
 
-	// Write DOT file
 	_, err = dotFile.Write(dotBytes)
 	if err != nil {
 		panic(err)
 	}
 	dotFile.Close()
 
-	// Convert DOT file to image using Graphviz
 	cmd := exec.Command("dot", "-Tpng", "-o", "min_heap.png", "min_heap.dot")
 	err = cmd.Run()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
 
-	fmt.Println("Min heap visualization saved to min_heap.png")
+	fmt.Println("png created")
 }

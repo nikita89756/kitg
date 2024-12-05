@@ -1,21 +1,19 @@
 package main
 
 import (
-	heap "fibonachi/fibonachiHeap"
+	structure "fibonachi/fibonacciHeap"
 	"fmt"
 )
 
 func main() {
-	fheap := heap.NewFibonacciHeap()
+	fheap := structure.NewFibonacciHeap()
 
-	fheap.Insert(5)
-	fheap.Insert(3)
-	fheap.Insert(8)
-	fheap.Insert(1)
+	fheap.Insert(11)
+	fheap.Insert(10)
+	fheap.Insert(39)
+	fheap.Insert(26)
+	fheap.Insert(24)
 
-	fmt.Println("Minimum value:", fheap.GetMinimum())
-
-	fmt.Println("Removing minimum value:", fheap.RemoveMinimum())
-
-	fheap.Visualization()
+	fmt.Printf("Minimum value: %d\n", fheap.GetMin())
+	fmt.Printf("Minimum value removed: %d\n", fheap.ExtractMin())
 }

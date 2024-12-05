@@ -57,13 +57,13 @@ func (tree *AvlTree) fixNodeHeight() {
 
 func (tree *AvlTree) balanceTree() *AvlTree {
 	tree.fixNodeHeight()
-	if tree.getBalanceFactor() == 2 { // big Left rotate
+	if tree.getBalanceFactor() == 2 {
 		if tree.Right.getBalanceFactor() < 0 {
 			tree.Right = tree.Right.makeRightSmallRotate()
 		}
 		return tree.makeLeftSmallRotate()
 	}
-	if tree.getBalanceFactor() == -2 { // big Right rotate
+	if tree.getBalanceFactor() == -2 {
 		if tree.Left.getBalanceFactor() > 0 {
 			tree.Left = tree.Left.makeLeftSmallRotate()
 		}
@@ -126,6 +126,19 @@ func (tree *AvlTree) InsertTree(Key int) *AvlTree {
 	return tree.balanceTree()
 }
 
+func (tree *AvlTree) FindKey(key int) *AvlTree {
+	if tree == nil {
+		return nil
+	}
+
+	if key == tree.Key {
+		return tree
+	} else if key < tree.Key {
+		return tree.Left.FindKey(key)
+	} else {
+		return tree.Right.FindKey(key)
+	}
+}
 func (tree *AvlTree) Traversal() {
 	if tree.Left != nil {
 		tree.Left.Traversal()

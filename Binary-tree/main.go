@@ -15,27 +15,25 @@ func main() {
 	minHeap.Insert(4)
 	minHeap.Insert(45)
 
-	fmt.Print("Min Heap: ")
+	fmt.Print("Heap: ")
 	minHeap.PrintHeap()
 	minHeap.Visualize()
 	min, _ := minHeap.GetMin()
-	fmt.Println("Minimum element:", min)
+	fmt.Println("Минимальный элемент:", min)
 
 	minHeap.ExtractMin()
-	fmt.Print("After extracting min: ")
+	fmt.Print("После удаления минимума: ")
 	minHeap.PrintHeap()
 	minHeap.ExtractMin()
-	fmt.Print("After extracting min: ")
+	fmt.Print("После удаления минимума: ")
 	minHeap.PrintHeap()
 
-	// Delete node from min-heap
 	minHeap.DeleteNode(4)
-	fmt.Print("After deleting 4: ")
+	fmt.Print("После удаления  4: ")
 	minHeap.PrintHeap()
 
-	// Decrease key in min-heap
 	minHeap.DecreaseKey(2, 1)
-	fmt.Print("After decreasing key at index 2 to 1: ")
+	fmt.Print("После смены значения на 1: ")
 
 	minHeap.PrintHeap()
 	maxHeap := &maxheap.MaxHeap{}
@@ -46,26 +44,24 @@ func main() {
 	maxHeap.Insert(4)
 	maxHeap.Insert(45)
 
-	fmt.Print("Max Heap: ")
+	fmt.Print("Heap: ")
 	maxHeap.PrintHeap()
 	maxHeap.Visualize()
 	max, _ := maxHeap.GetMax()
-	fmt.Println("Maximum element:", max)
+	fmt.Println("Максимальный элемент:", max)
 
 	maxHeap.ExtractMax()
-	fmt.Print("After extracting max: ")
+	fmt.Print("После удаления максимума: ")
 	maxHeap.PrintHeap()
 	maxHeap.ExtractMax()
-	fmt.Print("After extracting max: ")
+	fmt.Print("После удаления максимума: ")
 	maxHeap.PrintHeap()
 
-	// Delete node from max-heap
 	maxHeap.DeleteNode(4)
-	fmt.Print("After deleting 4: ")
+	fmt.Print("После удаления 4: ")
 	maxHeap.PrintHeap()
 
-	// Increase key in max-heap
 	maxHeap.IncreaseKey(2, 50)
-	fmt.Print("After increasing key at index 2 to 50: ")
+	fmt.Print("После смены значения на 50: ")
 	maxHeap.PrintHeap()
 }
